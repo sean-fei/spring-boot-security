@@ -35,5 +35,10 @@
       <artifactId>spring-boot-starter-log4j2</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.modelMapper</groupId>
+      <artifactId>modelMapper</artifactId>
+    </dependency>
+
   </dependencies>
 </project>

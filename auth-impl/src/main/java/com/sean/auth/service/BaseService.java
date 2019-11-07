@@ -2,6 +2,8 @@ package com.sean.auth.service;
 
 import com.sean.auth.page.PageRequest;
 import com.sean.auth.page.PageResult;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -48,6 +50,21 @@ public interface BaseService<T> {
      * @param pageRequest 自定义，统一分页查询请求
      * @return PageResult 自定义，统一分页查询结果
      */
-    PageResult findPage(PageRequest pageRequest);
+//    PageResult findPage(PageRequest pageRequest);
+
+    /**
+     * 使用JPA分页
+     * @param t
+     * @param pageable
+     * @return
+     */
+    Page<T> search(T t, Pageable pageable);
+
+    /**
+     * 使用JPA分页
+     * @param t
+     * @return
+     */
+    Page<T> search(T t);
 
 }

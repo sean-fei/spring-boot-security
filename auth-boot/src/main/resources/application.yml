@@ -1,7 +1,20 @@
 spring:
   profiles:
     active: dev
-  application:
-    name: auth-sso
+#  application:
+#    name: auth-oauth
   messages:
     basename: i18n/messages/messages
+
+ignore:
+  urls:
+    - /druid/**
+    - /login
+    - /v2/api-docs
+    - /swagger-ui.html
+    - /swagger-resources/**
+    - /webjars/**
+    - /webjars/springfox-swagger-ui/**
+    - /captcha.jpg**
+    - /actuator/**
+logging.level.org.springframework.boot.autoconfigure: ERROR

@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.context.ApplicationPidFileWriter;
 
 /**
  * @author sean (yunfei_li@qq.com)
@@ -15,7 +16,9 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 public class SecurityOauth2Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(SecurityOauth2Application.class, args);
+        SpringApplication springApplication = new SpringApplication(SecurityOauth2Application.class);
+        springApplication.addListeners(new ApplicationPidFileWriter());
+        springApplication.run(args);
     }
 
 }

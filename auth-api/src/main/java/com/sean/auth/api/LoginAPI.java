@@ -1,7 +1,10 @@
 package com.sean.auth.api;
 
 import com.sean.auth.http.HttpResult;
+import com.sean.auth.vo.LogVO;
 import com.sean.auth.vo.LoginBean;
+import com.sean.auth.vo.UserVO;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,5 +47,19 @@ public interface LoginAPI {
      * @param request
      */
     void logout(HttpServletResponse response, HttpServletRequest request);
+
+    /**
+     * 日志分页查询
+     * @param logVO
+     * @return
+     */
+    Page<LogVO> search(LogVO logVO);
+
+    /**
+     * 用户分页查询
+     * @param userVO
+     * @return
+     */
+    Page<UserVO> search(UserVO userVO);
 
 }

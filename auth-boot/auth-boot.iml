@@ -99,6 +99,7 @@
     <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.8" level="project" />
     <orderEntry type="module" module-name="auth-api" />
     <orderEntry type="module" module-name="auth-utlis" />
+    <orderEntry type="library" name="Maven: org.modelMapper:modelMapper:2.3.5" level="project" />
     <orderEntry type="module" module-name="auth-vo" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger2:2.9.2" level="project" />
     <orderEntry type="library" name="Maven: io.swagger:swagger-annotations:1.5.20" level="project" />
@@ -110,6 +111,8 @@
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.jhlabs:filters:2.0.235-1" level="project" />
     <orderEntry type="module" module-name="auth-jwt" />
+    <orderEntry type="library" name="Maven: org.springframework.cloud:spring-cloud-context:2.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-crypto:5.1.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.57" level="project" />
     <orderEntry type="library" name="Maven: net.sf.trove4j:core:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.5" level="project" />

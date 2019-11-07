@@ -1,6 +1,8 @@
 package com.sean.auth.repository;
 
 import com.sean.auth.model.SysUser;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Repository;
  * @date 2019/7/3 16:38
  */
 @Repository
-public interface UserRepository extends CrudRepository<SysUser, Long> {
+public interface UserRepository extends JpaRepository<SysUser, Long>, JpaSpecificationExecutor<SysUser> {
 
     @Query("from SysUser where name =:name ")
     SysUser getUserByName(@Param("name") String name);

@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2019/7/3 16:00
  */
 @Data
-public class UserVO extends BaseVO{
+public class UserVO extends PageVO {
 
     private static final long serialVersionUID = -8533172089000189291L;
 

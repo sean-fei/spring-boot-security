@@ -4,13 +4,18 @@ import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.sean.auth.annotation.Operation;
 import com.sean.auth.api.LoginAPI;
 import com.sean.auth.http.HttpResult;
+import com.sean.auth.service.LogService;
 import com.sean.auth.service.UserService;
 import com.sean.auth.utlis.pwd.PasswordUtils;
+import com.sean.auth.vo.LogVO;
 import com.sean.auth.vo.LoginBean;
 import com.sean.auth.vo.UserVO;
 import com.sean.auth.security.SecurityUtils;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +48,9 @@ public class LoginController implements LoginAPI {
     @Autowired
     AuthenticationManager authenticationManager;
 
+    @Autowired
+    LogService logService;
+
     /**
      * 登录验证码SessionKey
      */
@@ -72,6 +80,7 @@ public class LoginController implements LoginAPI {
         // store the text in the session
         request.getSession().setAttribute(LOGIN_VALIDATE_CODE, capText);
         // create the image with the text
+        System.out.println(capText);
         BufferedImage bi = captchaProducer.createImage(capText);
         ServletOutputStream out = response.getOutputStream();
         // write the data out
@@ -87,8 +96,6 @@ public class LoginController implements LoginAPI {
     @GetMapping("/index")
     @ResponseBody
     public String index() {
-        long id = 1;
-        userService.findById(id);
         return "当前用户：" + SecurityUtils.getUsername();
     }
 
@@ -133,6 +140,7 @@ public class LoginController implements LoginAPI {
         }
         request.getSession().setAttribute(LOGIN_VALIDATE_CODE, "");
         // 用户信息
+
         UserVO user = userService.findByName(username);
 
         // 账号不存在、密码错误
@@ -153,6 +161,23 @@ public class LoginController implements LoginAPI {
         return HttpResult.ok(SecurityUtils.login(request, username, password, authenticationManager));
         // Shiro 系统登录认证
 //        return HttpResult.ok(tokenService.createToken(user.getId()));
+    }
+
+    @Override
+    @ApiOperation(value = "日志搜索", notes = "日志搜索")
+    @GetMapping("/search/logs")
+    @ResponseBody
+    public Page<LogVO> search(LogVO logVO) {
+
+        return logService.search(logVO);
+    }
+
+    @Override
+    @ApiOperation(value = "用户搜索", notes = "用户搜索")
+    @GetMapping("/search/users")
+    @ResponseBody
+    public Page<UserVO> search(UserVO userVO) {
+        return userService.search(userVO);
     }
 
 }

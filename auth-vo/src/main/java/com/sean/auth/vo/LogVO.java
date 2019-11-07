@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2019/7/3 15:58
  */
 @Data
-public class LogVO extends BaseVO {
+public class LogVO extends PageVO {
 
     private static final long serialVersionUID = -3496474810130895100L;
 
@@ -36,6 +36,10 @@ public class LogVO extends BaseVO {
      * 执行时长(毫秒)
      */
     private Long time;
+
+    private Long startTime;
+
+    private Long entTime;
 
     /**
      * 操作IP地址

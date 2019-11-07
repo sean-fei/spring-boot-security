@@ -1,6 +1,8 @@
 package com.sean.auth.repository;
 
 import com.sean.auth.model.SysLog;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +12,5 @@ import org.springframework.stereotype.Repository;
  * @date 2019/7/3 17:02
  */
 @Repository
-public interface LogRepository extends CrudRepository<SysLog, Long> {
+public interface LogRepository extends JpaRepository<SysLog, Long>, JpaSpecificationExecutor<SysLog> {
 }
